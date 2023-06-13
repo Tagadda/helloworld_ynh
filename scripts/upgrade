@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -9,6 +10,8 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 
 echo "Hello world!" > $install_dir/index.html
 chown -R www-data: "$install_dir"
+
+ynh_add_config_exp --template=".env" --destination="$install_dir/.env"
 
 #=================================================
 # NGINX CONFIGURATION
